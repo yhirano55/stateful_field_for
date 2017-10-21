@@ -1,6 +1,10 @@
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+gem "onkcop", require: false
+gem "pry"
+gem "rails"
+gem "sqlite3"
 
-# Specify your gem's dependencies in stateful_field_for.gemspec
-gemspec
+group :test do
+  gem "rspec-rails", "~> 3.7"
+end

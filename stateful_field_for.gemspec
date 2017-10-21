@@ -1,36 +1,23 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$LOAD_PATH.push File.expand_path("lib", __dir__)
+
 require "stateful_field_for/version"
 
-Gem::Specification.new do |spec|
-  spec.name          = "stateful_field_for"
-  spec.version       = StatefulFieldFor::VERSION
-  spec.authors       = ["Yoshiyuki Hirano"]
-  spec.email         = ["yhirano@me.com"]
+Gem::Specification.new do |s|
+  s.name        = "stateful_field_for"
+  s.version     = StatefulFieldFor::VERSION
+  s.authors     = ["Yoshiyuki Hirano"]
+  s.email       = ["yhirano@me.com"]
+  s.homepage    = "https://github.com/yhirano55/stateful_field_for"
+  s.summary     = "Provide the bang and predicate methods for Active Record"
+  s.description = s.summary
+  s.license     = "MIT"
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  s.required_ruby_version = ">= 2.2.0"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
+  s.add_dependency "railties", ">= 5.0"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  s.add_development_dependency "bundler", "~> 1.15"
 
-  spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  s.files      = Dir["{app,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.test_files = Dir["spec/**/*"]
 end
