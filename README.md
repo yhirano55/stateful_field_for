@@ -22,20 +22,27 @@ Or install it yourself as:
 
 ## Usage
 
-```ruby
-class Article < ApplicationRecord
-  stateful_field_for :published_at, default: :unpublished do
-    enable  :publish,   to: :published
-    disable :unpublish, to: :unpublished
-  end
+```diff
+class Picture < ApplicationRecord
++  stateful_field_for :hidden_at, scope: true do
++    enable  :hide, to: :hidden
++    disable :show, to: :visible, initial: true
++  end
 end
+```
 
-article = Article.new
+Then you can use the bang and predicate methods:
 
-article.unpublished? # true
-article.publish!
-article.unpublished? # false
-article.published?   # true
+```ruby
+picture = Picture.create
+
+picture.show!
+picture.hidden?  # false
+picture.visible? # true
+
+picture.hide!
+picture.hidden?  # true
+picture.visible? # false
 ```
 
 ## License
