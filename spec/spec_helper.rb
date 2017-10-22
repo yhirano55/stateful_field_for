@@ -1,14 +1,22 @@
 require "bundler/setup"
+# load Rails first
+require "rails"
+
+# needs to load the app next
+require_relative "fake_app/application"
+
 require "stateful_field_for"
+require "rspec/rails"
+require "pry"
 
 RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
-
-  # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
+  config.use_transactional_fixtures = true
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
 end
+
+CreateTables.migrate(:up) unless ActiveRecord::Base.connection.table_exists?("pictures")
