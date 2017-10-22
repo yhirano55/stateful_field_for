@@ -1,5 +1,7 @@
 # StatefulFieldFor
 
+[![Build Status](https://travis-ci.org/yhirano55/stateful_field_for.svg?branch=master)](https://travis-ci.org/yhirano55/stateful_field_for)
+[![Gem Version](https://badge.fury.io/rb/stateful_field_for.svg)](https://badge.fury.io/rb/stateful_field_for)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Provide the bang and predicate methods for Active Record.
